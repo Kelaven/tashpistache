@@ -27,3 +27,6 @@
 
 # ignorer mes documents
 /myothersdocs/
+
+# Editor directories and files
+.DS_Store
