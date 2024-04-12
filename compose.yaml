@@ -24,3 +24,40 @@ volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:
 ###< doctrine/doctrine-bundle ###
+
+
+
+
+
+
+
+
+# services:
+#   database:
+#     image: mysql
+#     ports:
+#       - "3306:3306"
+#     environment:
+#       MYSQL_DATABASE: tashpistache
+#       MYSQL_USER: tashpistacheadmin
+#       MYSQL_PASSWORD: test
+#       MYSQL_ROOT_PASSWORD: root
+#     volumes:
+#       - persistent:/var/lib/mysql
+#     networks:
+#       - default
+
+#   phpmyadmin:
+#     image: phpmyadmin
+#     restart: unless-stopped
+#     environment:
+#       PMA_HOST: database
+#       PMA_USER: root
+#       PMA_PASSWORD: root
+#     ports:
+#       - "8080:80"
+#     depends_on:
+#       - database
+
+# volumes:
+#   persistent:
