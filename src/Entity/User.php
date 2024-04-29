@@ -7,10 +7,14 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ApiResource()]
-class User
+class User implements PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -41,8 +45,11 @@ class User
     #[ORM\OneToMany(targetEntity: Task::class, mappedBy: 'user', orphanRemoval: true)]
     private Collection $tasks;
 
+    /**
+     * @var list<string> The user roles
+     */
     #[ORM\Column]
-    private ?bool $isAdmin = null;
+    private array $roles = [];
 
     public function __construct()
     {
@@ -156,14 +163,26 @@ class User
         return $this;
     }
 
-    public function isAdmin(): ?bool
+    /**
+     * @see UserInterface
+     *
+     * @return list<string>
+     */
+    public function getRoles(): array
     {
-        return $this->isAdmin;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
-    public function setAdmin(bool $isAdmin): static
+    /**
+     * @param list<string> $roles
+     */
+    public function setRoles(array $roles): static
     {
-        $this->isAdmin = $isAdmin;
+        $this->roles = $roles;
 
         return $this;
     }

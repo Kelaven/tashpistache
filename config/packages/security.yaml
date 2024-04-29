@@ -38,8 +38,8 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
-        - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/login, roles: PUBLIC_ACCESS } # route disponible pour tout le monde
+        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY } # être authentifié pour accéder à la route
 
 when@test:
     security:
