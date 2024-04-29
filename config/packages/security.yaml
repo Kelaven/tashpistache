@@ -1,3 +1,5 @@
+# ! @todo : il faudra sécuriser l'accès aux gestions des utilisateurs avec le role d'admin
+
 security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:

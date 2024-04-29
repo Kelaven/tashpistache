@@ -24,7 +24,9 @@ class AppFixtures extends Fixture
         $user->setRoles(['ROLE_USER'])
             ->setName('User')
             ->setEmail('user@email.fr')
-            ->setPassword($this->userPasswordHasher->hashPassword($user, 'password'));
+            ->setPassword($this->userPasswordHasher->hashPassword($user, 'password'))
+            ->setCreatedAt(new \DateTimeImmutable());
+
 
         $manager->persist($user);
 
@@ -34,7 +36,8 @@ class AppFixtures extends Fixture
         $userAdmin->setRoles(['ROLE_ADMIN'])
             ->setName('Admin')
             ->setEmail('admin@email.fr')
-            ->setPassword($this->userPasswordHasher->hashPassword($userAdmin, 'password'));
+            ->setPassword($this->userPasswordHasher->hashPassword($userAdmin, 'password'))
+            ->setCreatedAt(new \DateTimeImmutable());
 
         $manager->persist($userAdmin);
         $manager->flush();

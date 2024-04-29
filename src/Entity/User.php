@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @todo: Vérifier que lorsque les utilisateurs se créent un compte ou le modifient, 
+ * les colonnes created_at/updated_at/deleted_at se remplissent automatiquement
+ */
+
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
