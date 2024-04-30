@@ -11,9 +11,9 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
-            lazy: true
-            provider: users_in_memory
+        # main:
+        #     lazy: true
+        #     provider: users_in_memory
 
         login:
             pattern: ^/api/login
