@@ -27,9 +27,8 @@
 
 
 # Ignorer mes documents
-/myothersdocs/
-myothersdocs
-myothersdocs/
+myotherdocs/
+
 
 # Editor directories and files
 .DS_Store
