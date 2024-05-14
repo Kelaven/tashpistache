@@ -8,6 +8,12 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Put;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -18,7 +24,28 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new Get(
+            security: 'is_granted("ROLE_ADMIN")'
+        ),
+        new Put(
+            security: 'is_granted("ROLE_ADMIN")'
+        ),
+        new Delete(
+            security: 'is_granted("ROLE_ADMIN")'
+        ),
+        new Patch(
+            security: 'is_granted("ROLE_ADMIN")'
+        ),
+        new GetCollection(
+            security: 'is_granted("ROLE_ADMIN")'
+        ),
+        new Post(
+            security: 'is_granted("ROLE_ADMIN")'
+        )
+    ]
+)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
